@@ -29,7 +29,7 @@ export default function EmployeeSingle({ employee }: EmployeeSingleProps) {
         <p className="font-normal text-gray-500 leading-5 mb-5">
           <EmployeeHireDate 
             hireDate={employee.hireDate} 
-            showTimeSince={false} />
+            showTimeSince={true} />
         </p>
         <Link 
           href={`/employee/${employee.id}`} 

@@ -1,4 +1,4 @@
-import { getTimeSince } from "@/common/dateUtils"
+import { getFormatedDate, getTimeSince } from "@/common/dateUtils"
 import { useMemo } from "react"
 
 interface EmployeeHireDateProps {
@@ -12,9 +12,15 @@ export default function EmployeeHireDate({hireDate, showTimeSince}: EmployeeHire
     [hireDate]
   )
 
+  const formatedDate = useMemo(
+    () => getFormatedDate(hireDate),
+    [hireDate]
+  )
+
   return (
     <>
-      <b>Hire date:</b> { hireDate ?? 'Not hired yet' }
+      <b>Hire date:</b><br />
+      { formatedDate ?? 'Not hired yet' }
       { showTimeSince && <><br /> {timeSinceHired} </> }
     </>
   )

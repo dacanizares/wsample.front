@@ -10,7 +10,7 @@ interface InputComponentProps {
 export default function InputComponent({label, name, placeholder, required=false, type="text", maxLength=20}: InputComponentProps) {
   return (
     <>
-      <label className="block mb-2 text-sm font-medium text-gray-600 w-full">
+      <label className="block mt-2 text-sm font-medium text-gray-600 w-full">
         { label }
       </label>
       <input 

@@ -31,8 +31,24 @@ export function getTimeSince(dateStr: string | undefined): string {
   if (dateStr) {
     const date = tryParseDate(dateStr);
     if (date) {
-      result += `Joined ${ getDaysBetween(date, new Date()) } days ago`
+      let days = getDaysBetween(date, new Date());
+      let years = Math.floor(days / 365);
+      days %= 365;
+      let months = Math.floor(days / 30);
+      days %= 30;
+      result += `(${years}y - ${months}m -  ${ days }d)`
     }
   }
   return result;
+}
+
+export function getFormatedDate(dateStr: string | undefined): string | null {
+  if (dateStr) {
+    const date = tryParseDate(dateStr);
+    if (date) {
+      const month = date.toLocaleString('default', { month: 'long' });
+      return `${month} ${date.getDate()}, ${date.getFullYear()}`
+    }
+  }
+  return null;
 }
