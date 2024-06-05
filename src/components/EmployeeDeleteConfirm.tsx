@@ -2,16 +2,14 @@ import Employee from "@/models/Employee"
 import EmployeeAvatar from "./EmployeeFields/EmployeeAvatar"
 import EmployeeMainInfo from "./EmployeeFields/EmployeeMainInfo"
 import EmployeeHireDate from "./EmployeeFields/EmployeeHireDate"
-import DepartmentsForm from "./DepartmentsForm"
-import ActivateForm from "./ToggleStatusForm"
+import DeleteEmployeeConfirmButtons from "./DeleteEmployeeConfirmButton"
+import { DeleteEmployee } from "@/api/employeeApi"
 
-import DeleteEmployeeButton from "./DeleteEmployeeButton"
-
-interface EmployeeDetailsProps {
+interface EmployeeDeleteConfirmProps {
   employee: Employee
 }
 
-export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
+export default function EmployeeDeleteConfirm({ employee }: EmployeeDeleteConfirmProps) {
   return (
     <>
       <div className="relative flex flex-col sm:flex-row items-center border border-solid border-gray-200 bg-slate-50 rounded m-4 sm:m-0 drop-shadow-md mb-10">
@@ -43,15 +41,7 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
       </div>
 
       <div className="flex flex-row sm:flex-col">
-        <DepartmentsForm
-          employeeId={employee.id}
-          departmentId={employee.departmentId?.toString() as string}
-        />
-        <ActivateForm
-          id={employee.id}
-          active={employee.active}
-        />
-        <DeleteEmployeeButton 
+        <DeleteEmployeeConfirmButtons
           id={employee.id}
         />
       </div>

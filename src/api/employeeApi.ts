@@ -67,3 +67,13 @@ export async function CreateNewEmployee(createEmployee: CreateEmployee): Promise
     return data;
   }
 }
+
+export async function DeleteEmployee(id: number): Promise<Employee | undefined> {
+  const res = await executeFetchNoCache(`${EMPLOYEES_API}`, 'DELETE', JSON.stringify({ id }));
+  if (res.status !== 200) {
+    throw Error(`Expected status 200 but received ${ res.status }`);
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}
