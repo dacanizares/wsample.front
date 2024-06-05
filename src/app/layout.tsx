@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import DebugResponsive from "@/components/DebugResponsive";
 
 
 export const metadata: Metadata = {
@@ -15,6 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="container mx-auto">{children}</body>
+
+      { process.env.DEBUG === 'true' && <DebugResponsive />} 
     </html>
   );
 }
