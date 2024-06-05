@@ -16,12 +16,12 @@ export default function DeleteEmployeeConfirmButtons({id}: DeleteEmployeeConfirm
     <>
       <Link
         href={`/employee/${id}`} 
-        className="bg-indigo-600 shadow-sm rounded py-2 px-5 text-white text-center font-semibold w-full hover:bg-indigo-800">
+        className="bg-indigo-600 shadow-sm rounded py-2 px-5 m-2 text-white text-center font-semibold w-full hover:bg-indigo-800">
           Back
       </Link>
       <button
         onClick={onConfirm}
-        className="bg-red-600 shadow-sm rounded py-2 px-5 text-white text-center font-semibold w-full hover:bg-red-800">
+        className="bg-red-600 shadow-sm rounded py-2 px-5 m-2 text-white text-center font-semibold w-full hover:bg-red-800">
           Confirm delete
       </button>
     </>

@@ -17,11 +17,13 @@ export default function ActivateForm({id, active}: ActivateFormProps) {
   
   const toggleStatusEmployeeActionWithParams = toggleStatusEmployeeAction.bind(null, { id, active });
   return (
-   <form action={toggleStatusEmployeeActionWithParams}>
+   <form 
+    className="flex flex-auto m-2"
+    action={toggleStatusEmployeeActionWithParams}>
     <div className="d-none bg-orange-500 hover:bg-orange-600 bg-lime-500 hover:bg-lime-600" />
     <button 
       disabled={pending}
-      className={`bg-indigo-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-indigo-800`}>
+      className={`bg-slate-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-slate-800`}>
         { active === 1 && <>Deactivate</> }
         { active === 0 && <>Activate</> }
     </button>

@@ -6,6 +6,7 @@ import DepartmentsForm from "./DepartmentsForm"
 import ActivateForm from "./ToggleStatusForm"
 
 import DeleteEmployeeButton from "./DeleteEmployeeButton"
+import Link from "next/link"
 
 interface EmployeeDetailsProps {
   employee: Employee
@@ -42,7 +43,7 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
         </div>
       </div>
 
-      <div className="flex flex-row sm:flex-col">
+      <div className="flex flex-col sm:flex-row border border-solid border-gray-200 bg-slate-200 rounded m-4 sm:m-0">        
         <DepartmentsForm
           employeeId={employee.id}
           departmentId={employee.departmentId?.toString() as string}
@@ -55,6 +56,9 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
           id={employee.id}
         />
       </div>
+      <Link href="/" className="inline-block p-3 mt-10">
+        Back to list
+      </Link>
     </>
   )
 }

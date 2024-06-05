@@ -9,7 +9,7 @@ export default function DeleteEmployeeButton({id}: DeleteEmployeeButtonmProps) {
   return (   
     <Link
       href={`/delete/${id}`} 
-      className="bg-red-600 shadow-sm rounded py-2 px-5 text-white text-center font-semibold w-full hover:bg-red-800">
+      className="flex flex-auto bg-red-600 shadow-sm rounded py-2 px-5 m-2 text-white text-center font-semibold hover:bg-red-800 items-center justify-center">
         Delete
     </Link>
   );

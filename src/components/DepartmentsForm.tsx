@@ -30,7 +30,9 @@ export default function DepartmentsForm({employeeId, departmentId}: DepartmentsF
   const updateDepartmentWithEmployeeId = updateDepartmentAction.bind(null, employeeId);
   
   return (
-   <form action={updateDepartmentWithEmployeeId}>
+   <form 
+      className="flex flex-auto flex-col m-2"
+      action={updateDepartmentWithEmployeeId}>
     <DepartmentsSelect
       selected={departmentId}
       departments={departments} />

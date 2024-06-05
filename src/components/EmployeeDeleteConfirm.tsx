@@ -40,7 +40,7 @@ export default function EmployeeDeleteConfirm({ employee }: EmployeeDeleteConfir
         </div>
       </div>
 
-      <div className="flex flex-row sm:flex-col">
+      <div className="flex flex-col sm:flex-row border border-solid border-gray-200 bg-slate-200 rounded m-4 sm:m-0">
         <DeleteEmployeeConfirmButtons
           id={employee.id}
         />
