@@ -40,6 +40,7 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
       <div className="">
         <DepartmentsForm
           employeeId={employee.id}
+          departmentId={employee.departmentId?.toString() as string}
         />
       </div>
     </>
