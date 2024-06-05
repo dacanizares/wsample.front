@@ -8,6 +8,7 @@ interface Employee {
   address: string | null;
   avatarUrl: string | null;
   departmentId: number | null
+  departmentName?: string | null
 }
 
 export default Employee;
