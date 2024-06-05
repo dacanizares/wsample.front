@@ -4,6 +4,8 @@ import Employee from "@/models/Employee";
 import { useFormState, useFormStatus } from "react-dom";
 import createNewEmployeeAction from "@/actions/createEmployee";
 import InputComponent from "./InputComponent";
+import { useContext } from "react";
+import { ModalContext } from "./EmployeeModal";
 
 interface EmployeeFormProps {
   employee?: Employee
@@ -14,11 +16,14 @@ const initialState = {
 }
 
 export default function EmployeeForm({}: EmployeeFormProps) {
+  const { isOpen, setIsOpen } = useContext(ModalContext);
+
   const { pending } = useFormStatus();
   const [state, formAction] = useFormState(createNewEmployeeAction, initialState)
   
   return (
-    <form action={formAction}>
+    <form 
+      action={formAction}>
       <InputComponent
         label="First name"
         name="firstName"
@@ -62,11 +67,18 @@ export default function EmployeeForm({}: EmployeeFormProps) {
         {state?.message}
       </p>
 
-      <button 
-        disabled={pending}
-        className="bg-indigo-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-indigo-800">
-          Create employee
-      </button>
+      <div className="flex flex-row">        
+        <button 
+          className="bg-slate-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-slate-800 m-2"
+          onClick={() => { setIsOpen(false) }}>
+            Close
+        </button>
+        <button 
+          disabled={pending}
+          className="bg-indigo-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-indigo-800 m-2">
+            Create
+        </button>
+      </div>
    </form>
   );
 }
