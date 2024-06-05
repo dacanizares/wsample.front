@@ -25,3 +25,18 @@ export async function FindEmployee(id: string): Promise<Employee | undefined> {
     return data;
   }
 }
+
+export async function UpdateDepartment(employeeId: number, departmentId: number): Promise<Employee | undefined> {
+  const body = {
+    'employeeId': employeeId,
+    'departmentId': departmentId
+  };
+
+  const res = await executeFetchNoCache(`${EMPLOYEES_API}/addtodepartment`, 'POST', JSON.stringify(body));
+  if (res.status !== 200) {
+    throw Error(`Expected status 200 but received ${ res.status }`);
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}
