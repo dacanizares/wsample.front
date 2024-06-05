@@ -25,7 +25,6 @@ export default function DepartmentsSelect({ departments, selected, setSelected }
       </option>
     )}
     </select>
-    <p>{selected}</p>
    </main>
   );
 }

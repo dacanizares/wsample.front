@@ -3,7 +3,7 @@ interface Employee {
   active: number;
   firstName: string;
   lastName: string;
-  hireDate: Date;
+  hireDate: string;
   phone: string | null;
   address: string | null;
   avatarUrl: string | null;
