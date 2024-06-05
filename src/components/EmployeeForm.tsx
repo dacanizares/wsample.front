@@ -1,36 +1,72 @@
 'use client'
-import { FindDepartments } from "@/api/departmentsApi";
-import { FindEmployee } from "@/api/employeeApi";
-import { maybePromise } from "@/common/maybeUtils";
 import DepartmentsSelect from "@/components/DepartmentsSelect";
-import Department from "@/models/Department";
 import Employee from "@/models/Employee";
-import { useEffect, useState } from "react";
-import EmployeeSingle from "./EmployeeSingle";
+import { useFormState, useFormStatus } from "react-dom";
+import createNewEmployeeAction from "@/actions/createEmployee";
+import InputComponent from "./InputComponent";
 
 interface EmployeeFormProps {
   employee?: Employee
 }
 
-export default function EmployeeForm({employee}: EmployeeFormProps) {
-  const [departments, setDepartments] = useState([] as Department[]);
-  useEffect(() => {
-    const loadData = async () => {
-      const departmentsResult = await maybePromise<Department[]>(FindDepartments, []);
-      setDepartments(departmentsResult);
-    }
+const initialState = {
+  message: '',
+}
 
-    loadData();
-  }, [])
+export default function EmployeeForm({}: EmployeeFormProps) {
+  const { pending } = useFormStatus();
+  const [state, formAction] = useFormState(createNewEmployeeAction, initialState)
   
-  const [selected, setSelected] = useState('0');
   return (
-   <main>
-    { employee && <EmployeeSingle employee={employee} /> }
-    <DepartmentsSelect 
-      selected={selected}
-      setSelected={setSelected} 
-      departments={departments} />
-   </main>
+    <form action={formAction}>
+      <InputComponent
+        label="First name"
+        name="firstName"
+        placeholder="First Name"
+        required={true}
+        type="text" />
+
+      <InputComponent
+        label="Last name"
+        name="lastName"
+        placeholder="Last Name"
+        required={true}
+        type="text" />
+
+      <InputComponent
+        label="Hire date"
+        name="hireDate"
+        placeholder="YYYY/MM/DD"
+        required={false}
+        maxLength={10}
+        type="date" />
+
+      <InputComponent
+        label="Phone"
+        name="phone"
+        placeholder="+1 111 11 11 11" />
+
+      <InputComponent
+        label="Address"
+        name="address"
+        placeholder="Your address"
+        maxLength={50} />
+
+      <InputComponent
+        label="Avatar url"
+        name="avatarUrl"
+        placeholder="Paste URL"
+        maxLength={255} />
+
+      <p className="text-red-700 my-2">
+        {state?.message}
+      </p>
+
+      <button 
+        disabled={pending}
+        className="bg-indigo-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-indigo-800">
+          Create employee
+      </button>
+   </form>
   );
 }

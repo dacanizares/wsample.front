@@ -3,6 +3,7 @@
 import { executeFetch, executeFetchNoCache } from "@/common/fetchUtils"
 import { API_URL } from "@/common/constants"
 import Employee from "@/models/Employee";
+import CreateEmployee from "@/models/CreateEmployee";
 
 const EMPLOYEES_API = `${API_URL}/employee`
 
@@ -48,6 +49,17 @@ export async function ToggleStatusEmployee(id: number, active: number): Promise<
   };
 
   const res = await executeFetchNoCache(`${EMPLOYEES_API}/togglestatus`, 'POST', JSON.stringify(body));
+  if (res.status !== 200) {
+    throw Error(`Expected status 200 but received ${ res.status }`);
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}
+
+
+export async function CreateNewEmployee(createEmployee: CreateEmployee): Promise<Employee | undefined> {
+  const res = await executeFetchNoCache(`${EMPLOYEES_API}`, 'POST', JSON.stringify(createEmployee));
   if (res.status !== 200) {
     throw Error(`Expected status 200 but received ${ res.status }`);
   } else {
