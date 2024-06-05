@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import DebugResponsive from "@/components/DebugResponsive";
+import Link from "next/link";
 
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body>
         <div className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% w-full h-auto p-2 mb-10 border-b-2 border-teal-400 shadow-md">
           <div className="container mx-auto">
-            <h1 className="text-2xl font-bold text-white">Simple Employee Maintenance</h1>
+            <Link href="/">
+              <h1 className="text-2xl font-bold text-white">Simple Employee Maintenance</h1>
+            </Link>
           </div>
         </div>
         <div className="container mx-auto">
