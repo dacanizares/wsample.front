@@ -1,5 +1,4 @@
 'use client'
-import DepartmentsSelect from "@/components/DepartmentsSelect";
 import Employee from "@/models/Employee";
 import { useFormState, useFormStatus } from "react-dom";
 import createNewEmployeeAction from "@/actions/createEmployee";
@@ -16,7 +15,7 @@ const initialState = {
 }
 
 export default function EmployeeForm({}: EmployeeFormProps) {
-  const { isOpen, setIsOpen } = useContext(ModalContext);
+  const { setIsOpen } = useContext(ModalContext);
 
   const { pending } = useFormStatus();
   const [state, formAction] = useFormState(createNewEmployeeAction, initialState)

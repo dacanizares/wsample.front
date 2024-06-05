@@ -1,6 +1,6 @@
 'use server'
 
-import { executeFetch, executeFetchNoCache } from "@/common/fetchUtils"
+import { executeFetchNoCache } from "@/common/fetchUtils"
 import { API_URL } from "@/common/constants"
 import HistoryLog from "@/models/HistoryLog";
 import { mapDateForSqlite } from "@/common/dateUtils";

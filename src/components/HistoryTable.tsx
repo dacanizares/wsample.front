@@ -1,7 +1,6 @@
 import { FindHistoryLog } from "@/api/historyApi";
 import { maybePromise } from "@/common/maybeUtils";
 import HistoryLog from "@/models/HistoryLog";
-import { useEffect, useState } from "react";
 
 interface HistoryTableProps {
   employeeId: number

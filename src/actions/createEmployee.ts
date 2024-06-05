@@ -28,8 +28,6 @@ export default async function createNewEmployeeAction(prevState: any, formData: 
   createEmployee.avatarUrl = cleanOptionalString(createEmployee.avatarUrl);
   createEmployee.avatarUrl = cleanOptionalString(createEmployee.avatarUrl);
   
-  console.log(createEmployee);
-
   const response = await CreateNewEmployee(createEmployee);
   redirect(`/employee/${response?.id}`);
 }

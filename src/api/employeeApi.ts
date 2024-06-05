@@ -1,6 +1,6 @@
 'use server'
 
-import { executeFetch, executeFetchNoCache } from "@/common/fetchUtils"
+import { executeFetchNoCache } from "@/common/fetchUtils"
 import { API_URL } from "@/common/constants"
 import Employee from "@/models/Employee";
 import CreateEmployee from "@/models/CreateEmployee";
