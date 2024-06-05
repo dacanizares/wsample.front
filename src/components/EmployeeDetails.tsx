@@ -7,6 +7,7 @@ import ActivateForm from "./ToggleStatusForm"
 
 import DeleteEmployeeButton from "./DeleteEmployeeButton"
 import Link from "next/link"
+import HistoryTable from "./HistoryTable"
 
 interface EmployeeDetailsProps {
   employee: Employee
@@ -56,6 +57,13 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
           id={employee.id}
         />
       </div>
+
+      <div className="flex mt-10">
+        <HistoryTable
+          employeeId={employee.id}
+        />
+      </div>
+
       <Link href="/" className="inline-block p-3 mt-10">
         Back to list
       </Link>
