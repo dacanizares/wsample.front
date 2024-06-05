@@ -15,3 +15,13 @@ export async function FindEmployees(): Promise<Employee[]> {
     return data;
   }
 }
+
+export async function FindEmployee(id: string): Promise<Employee | undefined> {
+  const res = await executeFetchNoCache(`${EMPLOYEES_API}/${id}`);
+  if (res.status !== 200) {
+    throw Error(`Expected status 200 but received ${ res.status }`);
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}

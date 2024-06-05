@@ -1,4 +1,5 @@
 import Employee from "@/models/Employee"
+import Link from "next/link"
 
 interface EmployeeSingleProps {
   employee: Employee
@@ -21,9 +22,11 @@ export default function EmployeeSingle({ employee }: EmployeeSingleProps) {
         <p className="font-normal text-gray-500 leading-5 mb-5">
           <b>Hire date:</b> { employee.hireDate?.toDateString() ?? '' }
         </p>
-        <button className="bg-indigo-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-indigo-800">
+        <Link 
+          href={`/employee/${employee.id}`} 
+          className="bg-indigo-600 shadow-sm rounded py-2 px-5 text-white font-semibold w-full hover:bg-indigo-800">
           View profile
-        </button>
+        </Link>
       </div>
     </div>
   )
