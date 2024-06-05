@@ -4,6 +4,7 @@ import EmployeeAvatar from "./EmployeeFields/EmployeeAvatar"
 import EmployeeMainInfo from "./EmployeeFields/EmployeeMainInfo"
 import EmployeeHireDate from "./EmployeeFields/EmployeeHireDate"
 import DepartmentsForm from "./DepartmentsForm"
+import ActivateForm from "./ToggleStatusForm"
 
 interface EmployeeDetailsProps {
   employee: Employee
@@ -14,7 +15,10 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
     <>
       <div className="relative flex flex-col sm:flex-row items-center border border-solid border-gray-200 bg-slate-50 rounded m-4 sm:m-0 drop-shadow-md mb-10">
         <div className="block overflow-hidden md:w-60 h-64">
-          <EmployeeAvatar avatarUrl={employee.avatarUrl} />
+          <EmployeeAvatar 
+            active={employee.active}
+            avatarUrl={employee.avatarUrl} 
+          />
         </div>
         <div className="flex flex-col justify-between h-full w-full p-3 text-center sm:text-left">
           <h2 className="font-semibold text-gray-900 text-2xl mb-2">
@@ -37,10 +41,14 @@ export default function EmployeeDetails({ employee }: EmployeeDetailsProps) {
         </div>
       </div>
 
-      <div className="">
+      <div className="flex flex-row sm:flex-col">
         <DepartmentsForm
           employeeId={employee.id}
           departmentId={employee.departmentId?.toString() as string}
+        />
+        <ActivateForm
+          id={employee.id}
+          active={employee.active}
         />
       </div>
     </>

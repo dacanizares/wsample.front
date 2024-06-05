@@ -40,3 +40,18 @@ export async function UpdateDepartment(employeeId: number, departmentId: number)
     return data;
   }
 }
+
+export async function ToggleStatusEmployee(id: number, active: number): Promise<Employee | undefined> {
+  const body = {
+    'id': id,
+    'active': active
+  };
+
+  const res = await executeFetchNoCache(`${EMPLOYEES_API}/togglestatus`, 'POST', JSON.stringify(body));
+  if (res.status !== 200) {
+    throw Error(`Expected status 200 but received ${ res.status }`);
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}
