@@ -1,4 +1,4 @@
-# sem.backend
+# wsample.front
 
 ![SEM Screenshot](.assets/screenshot.png)
 
