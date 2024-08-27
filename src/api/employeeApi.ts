@@ -73,7 +73,6 @@ export async function DeleteEmployee(id: number): Promise<Employee | undefined> 
   if (res.status !== 200) {
     throw Error(`Expected status 200 but received ${ res.status }`);
   } else {
-    const data = await res.json();
-    return data;
+    return undefined;
   }
 }
